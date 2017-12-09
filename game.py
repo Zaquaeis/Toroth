@@ -23,6 +23,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.left += 15
         self.rect.right -= 15
+        self.is_player = True
 class Tree(pygame.sprite.Sprite):
     def __init__(self):
     
@@ -38,7 +39,7 @@ class Tree(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.barrier = False
         self.ch = 'T'
-
+        self.is_player = False
 class Grass(pygame.sprite.Sprite):
     """
     This class represents the ball.
@@ -59,7 +60,7 @@ class Grass(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.barrier = False
         self.ch = ' '
-                
+        self.is_player = False    
 
 class Water(pygame.sprite.Sprite):
     """
@@ -78,6 +79,7 @@ class Water(pygame.sprite.Sprite):
         self.barrier = True
         self.rect = self.image.get_rect()
         self.ch = 'A'
+        self.is_player = False
 class Block(pygame.sprite.Sprite):
     """
     This class represents the ball.
@@ -95,6 +97,7 @@ class Block(pygame.sprite.Sprite):
         self.barrier = True
         self.rect = self.image.get_rect()
         self.ch = 'W'
+        self.is_player = False
 def draw(text):
     tiles = []
     f = open(text,'r')
@@ -214,33 +217,16 @@ while not done:
     blocks_hit_list = pygame.sprite.spritecollide(player, block_list, False)
     if len(blocks_hit_list) >0:
         
-        player.rect.x = x1
-        player.rect.y = y1
-    if player.rect.x > 1000:
-        player.rect.x = 0
         
-        for s in all_sprites_list:
-            s.rect.x -= 1000
-
-    if player.rect.x < 0:
-        player.rect.x = 1000
-        
-        for s in all_sprites_list:
-            s.rect.x += 1000
-
-    if player.rect.y > 1000:
-        player.rect.y = 0
-        
-        for s in all_sprites_list:
-            s.rect.x -= 1000
-
-    if player.rect.y < 0 :
-        player.rect.y = 1000
-        
-        for s in all_sprites_list:
-            s.rect.y += 1000
-
-
+        player.rect.x -= x_speed
+        player.rect.y -= y_speed
+    else:
+       for s in all_sprites_list:
+           if not s.is_player:
+               s.rect.x -= x_speed
+               s.rect.y -= y_speed
+       player.rect.x -= x_speed
+       player.rect.y -= y_speed
 
     all_sprites_list.draw(screen)
     screen.blit(player.image,player.rect)
