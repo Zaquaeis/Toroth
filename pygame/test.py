@@ -49,8 +49,7 @@ pygame.mouse.set_visible(0)
 # Speed in pixels per frame
 x_speed = 0
 y_speed = 0
-pygame.mixer.music.load('/home/william/toh.wav')
-pygame.mixer.music.play()
+
 # Current position
 initial = Vector(0,0)
 new = Vector(100,100)
