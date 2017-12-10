@@ -10,7 +10,7 @@ BLUE = (0,0,255)
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
-   
+
  
        # Call the parent class (Sprite) constructor
         pygame.sprite.Sprite.__init__(self)
@@ -27,7 +27,7 @@ class Player(pygame.sprite.Sprite):
 class Tree(pygame.sprite.Sprite):
     def __init__(self):
     
- 
+
        # Call the parent class (Sprite) constructor
         pygame.sprite.Sprite.__init__(self)
  
@@ -108,7 +108,7 @@ def draw(text):
     y = 0
     for ch in m:
         
-    
+        
         if ord(ch) ==32:
                 tile = Grass(75,75)
                 tile.rect.x = x
@@ -155,7 +155,7 @@ x_speed = 0
 y_speed = 0
 
 # Set the height and width of the screen
-screen_width = 1000
+screen_width = 1500
 screen_height = 1000
 screen = pygame.display.set_mode([screen_width, screen_height])
 
@@ -237,3 +237,4 @@ while not done:
     pygame.display.flip()
  
 pygame.quit()
+
