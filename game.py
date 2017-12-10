@@ -98,6 +98,28 @@ class Block(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.ch = 'W'
         self.is_player = False
+        
+
+class Door(pygame.sprite.Sprite):
+    """
+    This class represents the ball.
+    It derives from the "Sprite" class in Pygame.
+    """
+
+
+    def __init__(self, width, height,portal):
+  
+        pygame.sprite.Sprite.__init__(self)
+
+
+        self.image = pygame.Surface([width, height])
+        self.image.fill(BROWN)
+        self.barrier = True
+        self.rect = self.image.get_rect()
+        self.ch = 'D'
+        self.is_player = False
+        self.map_portal = portal
+
 def draw(text):
     tiles = []
     f = open(text,'r')
