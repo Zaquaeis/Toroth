@@ -164,7 +164,8 @@ block_list = pygame.sprite.Group()
 
 all_sprites_list = pygame.sprite.Group()
 tiles = draw('map.txt',53,52,block_list,all_sprites_list)
-
+x_start = 26
+y_start = 37
         
         
   
@@ -182,8 +183,8 @@ player.rect.y = TILE_DIMY*SIZE/2
 for t in all_sprites_list:
 
     if not t.is_player:
-        t.rect.x -= (26 - (TILE_DIMX/2))*75
-        t.rect.y -= (37 - (TILE_DIMY/2))*75
+        t.rect.x -= (x_start - (TILE_DIMX/2))*SIZE
+        t.rect.y -= (y_start - (TILE_DIMY/2))*SIZE
         
         
 # -------- Main Program Loop -----------
@@ -216,7 +217,7 @@ while not done:
             elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 y_speed = 0
     
-    screen.fill(WHITE)
+    screen.fill(GREEN)
     x1 = player.rect.x
     y1 = player.rect.y
     player.rect.x += x_speed
