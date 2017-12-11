@@ -1,0 +1,8 @@
+Blacksmith shop info
+
+W - Building Wall
+D - Door
+F - Furniture
+Space is floor
+
+Map is 22 (x) by 42 (y)
