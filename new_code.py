@@ -7,6 +7,8 @@ RED   = (255,   0,   0)
 GREEN = (0,255,0)
 BLUE = (0,0,255)
 BROWN = (200,200,20)
+BACKGRASS = (32,135,56)
+
 # size of a tile
 SIZE = 75
 
@@ -18,7 +20,7 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
  
        # Load the image
-        self.image = pygame.image.load("player2.png").convert()
+        self.image = pygame.image.load("Player.V3.1.png").convert()
  
         # Set our transparent color
         self.image.set_colorkey(WHITE)
@@ -35,7 +37,7 @@ class Tree(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
  
        # Load the image
-        self.image = pygame.image.load("tree.png").convert()
+        self.image = pygame.image.load("Tree.V3.1.png").convert()
  
         # Set our transparent color
         self.image.set_colorkey(WHITE)
@@ -75,7 +77,7 @@ class Grass(pygame.sprite.Sprite):
 
 
         self.image = pygame.Surface([75, 75])
-        self.image.fill(GREEN)
+        self.image.fill(BACKGRASS)
         self.rect = self.image.get_rect()
         self.barrier = False
         self.ch = ' '
@@ -92,14 +94,14 @@ class Water(pygame.sprite.Sprite):
  
         pygame.sprite.Sprite.__init__(self)
 
+        self.image = pygame.image.load("Water.V1.1.png").convert()
 
-        self.image = pygame.Surface([75,75])
-        self.image.fill(BLUE)
+
         self.barrier = True
         self.rect = self.image.get_rect()
         self.ch = 'A'
         self.is_player = False
-class Block(pygame.sprite.Sprite):
+class Wall(pygame.sprite.Sprite):
     """
     This class represents the ball.
     It derives from the "Sprite" class in Pygame.
@@ -110,12 +112,11 @@ class Block(pygame.sprite.Sprite):
   
         pygame.sprite.Sprite.__init__(self)
 
+        self.image = pygame.image.load("Wall.V1.1.png").convert()
 
-        self.image = pygame.Surface([75, 75])
-        self.image.fill(RED)
-        self.barrier = True
         self.rect = self.image.get_rect()
-        self.ch = 'W'
+        self.barrier = True
+        self.ch = "W"
         self.is_player = False
         
 
@@ -130,15 +131,15 @@ class Door(pygame.sprite.Sprite):
   
         pygame.sprite.Sprite.__init__(self)
 
+        self.image = pygame.image.load("Door.V1.1.png").convert()
 
-        self.image = pygame.Surface([75, 75])
-        self.image.fill(BROWN)
+
         self.barrier = True
         self.rect = self.image.get_rect()
         self.ch = 'D'
         self.is_player = False
         self.map_portal = 'map2.txt'
-TILE_DICT = {'D':Door,'A':Water,'W':Block,'T':Tree,' ':Grass,'B':Block,'P':Grass,'H':Grass,'R':Grass,'O':Grass,'S':Grass,'C':Cobble}
+TILE_DICT = {'D':Door,'A':Water,'W':Wall,'T':Tree,' ':Grass,'B':Wall,'P':Grass,'H':Grass,'R':Grass,'O':Grass,'S':Grass,'C':Cobble}
 #list of all tiles and what constructors to call
 def draw(text,x_dim,y_dim,bl,al):
    tiles = [y_dim*[None]]*x_dim
@@ -232,7 +233,7 @@ while not done:
             elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 y_speed = 0
     
-    screen.fill(GREEN)
+    screen.fill(BACKGRASS)
     x1 = player.rect.x
     y1 = player.rect.y
     player.rect.x += x_speed
