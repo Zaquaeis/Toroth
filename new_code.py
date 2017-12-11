@@ -44,6 +44,21 @@ class Tree(pygame.sprite.Sprite):
         self.ch = 'T'
         self.is_player = False
         #is_barrier detects if collision detection is required
+
+class Cobble(pygame.sprite.Sprite):
+    def __init__(self):
+
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = pygame.image.load("CobblePath75x75.V1.1.png").convert()
+
+#Do we even need this shit?
+        #self.image.set_colorkey(WHITE)
+        self.rect = self.image.get_rect()
+        self.barrier = False
+        self.ch = "C"
+        self.is_player = False
+        
 class Grass(pygame.sprite.Sprite):
     """
     This class represents the ball.
@@ -123,7 +138,7 @@ class Door(pygame.sprite.Sprite):
         self.ch = 'D'
         self.is_player = False
         self.map_portal = 'map2.txt'
-TILE_DICT = {'D':Door,'A':Water,'W':Block,'T':Tree,' ':Grass,'B':Block,'P':Grass,'H':Grass,'R':Grass,'O':Grass,'S':Grass}
+TILE_DICT = {'D':Door,'A':Water,'W':Block,'T':Tree,' ':Grass,'B':Block,'P':Grass,'H':Grass,'R':Grass,'O':Grass,'S':Grass,'C':Cobble}
 #list of all tiles and what constructors to call
 def draw(text,x_dim,y_dim,bl,al):
    tiles = [y_dim*[None]]*x_dim
